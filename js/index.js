@@ -7,6 +7,7 @@ const navLinks = document.querySelectorAll(`.nav-link`)
 
 function backgroundGrn() {
     event.target.style.backgroundColor = `green`
+    event.preventDefault()
     console.log(`the thing happened at NAV!`)
 }
 navLinks[0].addEventListener(`click`, backgroundGrn)
@@ -28,4 +29,30 @@ paragraphEvents[0].addEventListener(`mousemove`, backgroundBlue)
 paragraphEvents[1].addEventListener(`wheel`, backgroundBlue)
 paragraphEvents[2].addEventListener(`auxclick`, backgroundBlue)
 
-//contextmenu
+//scroll didn't work no matter what I connected it to...
+const imageCheck = document.querySelectorAll(`img`)
+
+function vanish() {
+    event.target.style.display = `none`
+    event.target.style.backgroundColor = "red"
+    console.log(`the thing happened to one of the images!`)
+}
+
+imageCheck[0].addEventListener(`mouseleave`, vanish)
+imageCheck[1].addEventListener(`devicemotion`, vanish)
+imageCheck[2].addEventListener(`drag`, vanish)
+imageCheck[3].addEventListener(`pointerleave`, vanish)
+
+//prevent event propagation
+
+const destiny = document.querySelectorAll(`.destination`)
+console.log(destiny)
+
+function destinyGrn() {
+    event.target.style.backgroundColor = `green`
+    event.stopPropagation()
+    console.log(`the thing happened at Destiny DIV!`)
+}
+destiny[0].addEventListener(`click`, destinyGrn)
+destiny[1].addEventListener(`click`, destinyGrn)
+destiny[2].addEventListener(`click`, destinyGrn)
